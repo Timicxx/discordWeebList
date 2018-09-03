@@ -76,10 +76,14 @@ async def on_ready():
 @bot.command(pass_context=True)
 async def add_entry(ctx, title: str, status: str, ep_ch: int, max: int, score: float, url: str, thumbnail: str):
     '''Adds a entry and sends it with the embed'''
-    
-    if list[title]:
-        await bot.send_message(ctx.message.channel, 'Entry with the same title already exists.')
-        return
+
+    # Check if entry already exists
+    try:
+        if list[title]:
+            await bot.send_message(ctx.message.channel, 'Entry with the same title already exists.')
+            return
+    except:
+        pass
     # Adds the entry to the dictionary
     list[title] = Entry(title, status, ep_ch, max, score, url, thumbnail)
 	
@@ -89,7 +93,7 @@ async def add_entry(ctx, title: str, status: str, ep_ch: int, max: int, score: f
     await bot.delete_message(ctx.message)
 	
     # Sends a entry in form of a embeded message
-    msg = await bot.send_message(ctx.message.channel, ' ', embed=embed)
+    msg = await bot.send_message(ctx.message.channel, ' ', embed=embed, tts=True)
     list[title].ctx = msg
 
 @bot.command(pass_context=True)
