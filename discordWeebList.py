@@ -5,7 +5,7 @@ from asyncio import sleep
 
 bot = commands.Bot(command_prefix='^')
 
-TOKEN = open("TOKEN", 'rb').read()
+TOKEN = open("TOKEN", 'r').read()
 	
 class Entry():
     def __init__(self, title, status, ep_ch, max, score, url, thumbnail, ctx=None):
