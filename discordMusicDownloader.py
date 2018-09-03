@@ -15,13 +15,15 @@ bot = commands.Bot(command_prefix='^')
 TOKEN = open("TOKEN", 'r').read()
 
 class Song:
-    def __init__(self, title, artist, cover_art=None):
+    def __init__(self, title, artist, cover_art=None, album=None):
         self.title = title
         self.artist = artist
         if self.title.find('-') is not -1:
             self.title = self.title.split(' - ')[1]
             self.artist = self.title.split(' - ')[0]
-        self.album = self.title.split('(')[0]
+        self.album = album
+        if album is None:
+            self.album = self.title.split('(')[0]
         self.full_song = "{} - {}".format(self.artist, self.title)
         self.cover = "{} - {}.jpg".format(self.artist, self.title)
         self.mp3 = "{} - {}.mp3".format(self.artist, self.title)
@@ -97,5 +99,14 @@ async def download(ctx, yt: str, sc: str):
     tags(info)
     finish(info)
     await bot.send_file(ctx.message.channel, 'downloads\\' + info.mp3)
-	
+
+@bot.command(pass_context=True)
+async def download_m(ctx, yt: str, artist: str, title: str, album: str, cover_art: str):
+    await bot.delete_message(ctx.message)
+    info = Song(title, artist, cover_art, album)
+    download_yt(yt, info)
+    tags(info)
+    finish(info)
+    await bot.send_file(ctx.message.channel, 'downloads\\' + info.mp3)
+
 bot.run(TOKEN)
