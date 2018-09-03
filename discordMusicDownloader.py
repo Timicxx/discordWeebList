@@ -12,7 +12,7 @@ from asyncio import sleep
 
 bot = commands.Bot(command_prefix='^')
 
-TOKEN = "NDU1NDEyNTczMTQwMTU2NDE2.Dm2rAA.FVm9M8pwKYH3GLjBQmnSbXJu-VI"
+TOKEN = open("TOKEN", 'rb').read()
 
 class Song:
     def __init__(self, title, artist, cover_art=None):
