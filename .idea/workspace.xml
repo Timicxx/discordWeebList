@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dce61663-9a15-4a07-9d6a-f8aa3a09533e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Weeb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discordWeebList.py" beforeDir="false" afterPath="$PROJECT_DIR$/discordWeebList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeblist.p" beforeDir="false" afterPath="$PROJECT_DIR$/weeblist.p" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="discordWeebList.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/discordWeebList.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#326#968#0" />
+                <element signature="e#987#1270#0" />
+                <element signature="e#1288#1864#0" />
+                <element signature="e#2875#3271#0" />
+                <element signature="e#3307#3807#0" />
+                <element signature="e#3842#4342#0" />
+                <element signature="e#4382#4534#0" />
+                <element signature="e#5735#6795#0" />
+                <element signature="e#7303#8327#0" />
+                <element signature="e#8410#9260#0" />
+                <element signature="e#9343#10193#0" />
+                <element signature="e#10274#10926#0" />
+                <element signature="e#11013#11677#0" />
+                <element signature="e#11761#12421#0" />
+                <element signature="e#12482#12752#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Weeb.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Weeb.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="481">
+              <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
+              <folding>
+                <element signature="e#19#196#0" />
+                <element signature="e#655#895#0" />
+                <element signature="e#655#894#0" />
+                <element signature="e#982#1835#0" />
+                <element signature="e#853#1669#0" />
+                <element signature="e#3201#4652#0" />
+                <element signature="e#4694#4708#0" />
+                <element signature="e#6291#6355#0" />
+                <element signature="e#6395#11569#0" />
+                <element signature="e#11610#17407#0" />
+                <element signature="e#17450#20944#0" />
+                <element signature="e#20995#21454#0" />
+                <element signature="e#21506#23798#0" />
+                <element signature="e#23192#25659#0" />
+                <element signature="e#24509#24704#0" />
+                <element signature="e#21644#21648#0" />
+                <element signature="e#23667#25451#0" />
+                <element signature="e#21773#23081#0" />
+                <element signature="e#6843#7049#0" />
+                <element signature="e#3275#3427#0" />
+                <element signature="e#3595#3825#0" />
+                <element signature="e#4188#4343#0" />
+                <marker date="1536528450951" expanded="true" signature="31593:33391" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>10.0</find>
+      <find>5.0</find>
+      <find>anime_list</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>self.anime_list</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/discordWeebList.py" />
+        <option value="$PROJECT_DIR$/Weeb.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="discordWeebList" type="b2602c69:ProjectViewProjectNode" />
+              <item name="discordWeebList" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Weeb" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="discordWeebList" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Weeb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Weeb" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dce61663-9a15-4a07-9d6a-f8aa3a09533e" name="Default" comment="" />
+      <created>1536492391258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1536492391258</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32943678" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="11" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/discordWeebList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#326#968#0" />
+            <element signature="e#987#1270#0" />
+            <element signature="e#1288#1864#0" />
+            <element signature="e#2875#3271#0" />
+            <element signature="e#3307#3807#0" />
+            <element signature="e#3842#4342#0" />
+            <element signature="e#4382#4534#0" />
+            <element signature="e#5735#6795#0" />
+            <element signature="e#7303#8327#0" />
+            <element signature="e#8410#9260#0" />
+            <element signature="e#9343#10193#0" />
+            <element signature="e#10274#10926#0" />
+            <element signature="e#11013#11677#0" />
+            <element signature="e#11761#12421#0" />
+            <element signature="e#12482#12752#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Weeb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
+          <folding>
+            <element signature="e#19#196#0" />
+            <element signature="e#655#895#0" />
+            <element signature="e#655#894#0" />
+            <element signature="e#982#1835#0" />
+            <element signature="e#853#1669#0" />
+            <element signature="e#3201#4652#0" />
+            <element signature="e#4694#4708#0" />
+            <element signature="e#6291#6355#0" />
+            <element signature="e#6395#11569#0" />
+            <element signature="e#11610#17407#0" />
+            <element signature="e#17450#20944#0" />
+            <element signature="e#20995#21454#0" />
+            <element signature="e#21506#23798#0" />
+            <element signature="e#23192#25659#0" />
+            <element signature="e#24509#24704#0" />
+            <element signature="e#21644#21648#0" />
+            <element signature="e#23667#25451#0" />
+            <element signature="e#21773#23081#0" />
+            <element signature="e#6843#7049#0" />
+            <element signature="e#3275#3427#0" />
+            <element signature="e#3595#3825#0" />
+            <element signature="e#4188#4343#0" />
+            <marker date="1536528450951" expanded="true" signature="31593:33391" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
