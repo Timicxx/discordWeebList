@@ -47,6 +47,11 @@ async def whatanime(ctx):
 async def sauce(ctx):
     '''Martin 2.0'''
     pass
+
+@bot.command(pass_context=True)
+async def yt2mp3(ctx):
+    '''Download mp3 with ID3 Tags from a YouTube link'''
+    pass
 #endregion
 
 # Start the bot
