@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce61663-9a15-4a07-9d6a-f8aa3a09533e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Weeb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Weeb.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/discordWeebList.py" beforeDir="false" afterPath="$PROJECT_DIR$/discordWeebList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeblist.p" beforeDir="false" afterPath="$PROJECT_DIR$/weeblist.p" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeblist.p" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,69 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="discordWeebList.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/discordWeebList.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#326#968#0" />
-                <element signature="e#987#1270#0" />
-                <element signature="e#1288#1864#0" />
-                <element signature="e#2875#3271#0" />
-                <element signature="e#3307#3807#0" />
-                <element signature="e#3842#4342#0" />
-                <element signature="e#4382#4534#0" />
-                <element signature="e#5735#6795#0" />
-                <element signature="e#7303#8327#0" />
-                <element signature="e#8410#9260#0" />
-                <element signature="e#9343#10193#0" />
-                <element signature="e#10274#10926#0" />
-                <element signature="e#11013#11677#0" />
-                <element signature="e#11761#12421#0" />
-                <element signature="e#12482#12752#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Weeb.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Weeb.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
-              <folding>
-                <element signature="e#19#196#0" />
-                <element signature="e#655#895#0" />
-                <element signature="e#655#894#0" />
-                <element signature="e#982#1835#0" />
-                <element signature="e#853#1669#0" />
-                <element signature="e#3201#4652#0" />
-                <element signature="e#4694#4708#0" />
-                <element signature="e#6291#6355#0" />
-                <element signature="e#6395#11569#0" />
-                <element signature="e#11610#17407#0" />
-                <element signature="e#17450#20944#0" />
-                <element signature="e#20995#21454#0" />
-                <element signature="e#21506#23798#0" />
-                <element signature="e#23192#25659#0" />
-                <element signature="e#24509#24704#0" />
-                <element signature="e#21644#21648#0" />
-                <element signature="e#23667#25451#0" />
-                <element signature="e#21773#23081#0" />
-                <element signature="e#6843#7049#0" />
-                <element signature="e#3275#3427#0" />
-                <element signature="e#3595#3825#0" />
-                <element signature="e#4188#4343#0" />
-                <marker date="1536528450951" expanded="true" signature="31593:33391" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -90,9 +29,30 @@
       <find>10.0</find>
       <find>5.0</find>
       <find>anime_list</find>
+      <find>js</find>
+      <find>except ValueError</find>
+      <find>except (ValueError, AttributeError)</find>
+      <find>response = await self.anime_manager.get_response(ctx, message)</find>
+      <find>response = await self.get_response(ctx, message)</find>
+      <find>.lower</find>
+      <find>entry_index += 1</find>
+      <find>lower</find>
+      <find>https://graph</find>
+      <find>&quot;```\n&quot;</find>
+      <find>elif response.content == &quot;cancel&quot;:</find>
+      <find>timeout_time</find>
+      <find>bot</find>
+      <find>self.bot</find>
+      <find>weeb_client</find>
     </findStrings>
     <replaceStrings>
       <replace>self.anime_list</replace>
+      <replace>except (ValueError, AttributeError)</replace>
+      <replace>except ValueError</replace>
+      <replace>TIMEOUT_TIME</replace>
+      <replace>Weeb.bot</replace>
+      <replace>self.bot</replace>
+      <replace>BOT</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -101,8 +61,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/discordWeebList.py" />
         <option value="$PROJECT_DIR$/Weeb.py" />
+        <option value="$PROJECT_DIR$/modules/Weeb.py" />
+        <option value="$PROJECT_DIR$/discordWeebList.py" />
       </list>
     </option>
   </component>
@@ -125,6 +86,11 @@
               <item name="discordWeebList" type="b2602c69:ProjectViewProjectNode" />
               <item name="discordWeebList" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="discordWeebList" type="b2602c69:ProjectViewProjectNode" />
+              <item name="discordWeebList" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -132,7 +98,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/Local Projects/discordWeebList/modules/Weeb.py" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -147,7 +115,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.discordWeebList">
+    <configuration name="Weeb (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="discordWeebList" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/Weeb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Weeb" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="discordWeebList" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -166,8 +152,33 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="discordWeebList" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="discordWeebList" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/discordWeebList.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Weeb" />
+      <item itemvalue="Python.Weeb (1)" />
+      <item itemvalue="Python.discordWeebList" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.discordWeebList" />
+        <item itemvalue="Python.Weeb (1)" />
         <item itemvalue="Python.Weeb" />
       </list>
     </recent_temporary>
@@ -187,24 +198,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32943678" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32943678" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
@@ -213,63 +223,415 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="22" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/discordWeebList.py">
+    <entry file="file://$PROJECT_DIR$/modules/Weeb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
+        <state relative-caret-position="31375">
+          <caret line="1255" column="43" selection-start-line="1255" selection-start-column="43" selection-end-line="1255" selection-end-column="43" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#326#968#0" />
-            <element signature="e#987#1270#0" />
-            <element signature="e#1288#1864#0" />
-            <element signature="e#2875#3271#0" />
-            <element signature="e#3307#3807#0" />
-            <element signature="e#3842#4342#0" />
-            <element signature="e#4382#4534#0" />
-            <element signature="e#5735#6795#0" />
-            <element signature="e#7303#8327#0" />
-            <element signature="e#8410#9260#0" />
-            <element signature="e#9343#10193#0" />
-            <element signature="e#10274#10926#0" />
-            <element signature="e#11013#11677#0" />
-            <element signature="e#11761#12421#0" />
-            <element signature="e#12482#12752#0" />
+            <element signature="e#168#345#0" />
+            <element signature="e#221#288#0" />
+            <element signature="e#322#345#0" />
+            <element signature="e#368#654#0" />
+            <element signature="e#676#964#0" />
+            <element signature="e#984#1789#0" />
+            <element signature="e#1071#1357#0" />
+            <element signature="e#1399#1417#0" />
+            <element signature="e#1459#1477#0" />
+            <element signature="e#1521#1541#0" />
+            <element signature="e#1603#1641#0" />
+            <element signature="e#1697#1729#0" />
+            <element signature="e#1771#1789#0" />
+            <element signature="e#1809#2614#0" />
+            <element signature="e#1896#2182#0" />
+            <element signature="e#2224#2242#0" />
+            <element signature="e#2284#2302#0" />
+            <element signature="e#2346#2366#0" />
+            <element signature="e#2428#2466#0" />
+            <element signature="e#2522#2554#0" />
+            <element signature="e#2596#2614#0" />
+            <element signature="e#2636#8802#0" />
+            <element signature="e#2694#2791#0" />
+            <element signature="e#2821#4021#0" />
+            <element signature="e#3065#3203#0" />
+            <element signature="e#3287#3425#0" />
+            <element signature="e#3593#3765#0" />
+            <element signature="e#3849#4021#0" />
+            <element signature="e#4078#4611#0" />
+            <element signature="e#4408#4454#0" />
+            <element signature="e#4798#5057#0" />
+            <element signature="e#5327#5499#0" />
+            <element signature="e#5550#5621#0" />
+            <element signature="e#5672#5743#0" />
+            <element signature="e#5861#6067#0" />
+            <element signature="e#6109#7429#0" />
+            <element signature="e#6146#6307#0" />
+            <element signature="e#6350#6609#0" />
+            <element signature="e#6782#7132#0" />
+            <element signature="e#7173#7379#0" />
+            <element signature="e#7471#8802#0" />
+            <element signature="e#7508#7669#0" />
+            <element signature="e#7723#7982#0" />
+            <element signature="e#8155#8505#0" />
+            <element signature="e#8546#8752#0" />
+            <element signature="e#8829#28609#0" />
+            <element signature="e#8857#8922#0" />
+            <element signature="e#8968#8996#0" />
+            <element signature="e#9026#9442#0" />
+            <element signature="e#9482#13854#0" />
+            <element signature="e#9547#9750#0" />
+            <element signature="e#9884#10591#0" />
+            <element signature="e#10612#10712#0" />
+            <element signature="e#10817#11268#0" />
+            <element signature="e#10838#10973#0" />
+            <element signature="e#11021#11268#0" />
+            <element signature="e#11636#11870#0" />
+            <element signature="e#11904#12184#0" />
+            <element signature="e#12343#13593#0" />
+            <element signature="e#13633#13839#0" />
+            <element signature="e#13895#17642#0" />
+            <element signature="e#13961#14120#0" />
+            <element signature="e#14417#14753#0" />
+            <element signature="e#14450#14753#0" />
+            <element signature="e#14537#14753#0" />
+            <element signature="e#14591#14753#0" />
+            <element signature="e#14793#15027#0" />
+            <element signature="e#15061#15244#0" />
+            <element signature="e#15403#17379#0" />
+            <element signature="e#15631#15811#0" />
+            <element signature="e#15866#16153#0" />
+            <element signature="e#16336#17113#0" />
+            <element signature="e#17161#17379#0" />
+            <element signature="e#17420#17626#0" />
+            <element signature="e#17685#20040#0" />
+            <element signature="e#17755#17916#0" />
+            <element signature="e#18213#18549#0" />
+            <element signature="e#18246#18549#0" />
+            <element signature="e#18333#18549#0" />
+            <element signature="e#18387#18549#0" />
+            <element signature="e#18589#18823#0" />
+            <element signature="e#18857#19040#0" />
+            <element signature="e#19199#19779#0" />
+            <element signature="e#19819#20025#0" />
+            <element signature="e#20103#20562#0" />
+            <element signature="e#20632#21256#0" />
+            <element signature="e#20866#21057#0" />
+            <element signature="e#21114#21167#0" />
+            <element signature="e#21194#21256#0" />
+            <element signature="e#21317#22416#0" />
+            <element signature="e#21396#21539#0" />
+            <element signature="e#21682#22155#0" />
+            <element signature="e#22195#22401#0" />
+            <element signature="e#22474#24495#0" />
+            <element signature="e#22554#22688#0" />
+            <element signature="e#22731#22907#0" />
+            <element signature="e#23066#24234#0" />
+            <element signature="e#23288#23459#0" />
+            <element signature="e#24274#24480#0" />
+            <element signature="e#24562#25979#0" />
+            <element signature="e#24651#24811#0" />
+            <element signature="e#24954#25718#0" />
+            <element signature="e#25101#25280#0" />
+            <element signature="e#25758#25964#0" />
+            <element signature="e#26043#27267#0" />
+            <element signature="e#26129#26288#0" />
+            <element signature="e#26431#27006#0" />
+            <element signature="e#27046#27252#0" />
+            <element signature="e#27324#28491#0" />
+            <element signature="e#27403#27542#0" />
+            <element signature="e#27685#28230#0" />
+            <element signature="e#28270#28476#0" />
+            <element signature="e#28547#28609#0" />
+            <element signature="e#28636#48509#0" />
+            <element signature="e#28664#28729#0" />
+            <element signature="e#28775#28803#0" />
+            <element signature="e#28833#29249#0" />
+            <element signature="e#29289#33753#0" />
+            <element signature="e#29353#29556#0" />
+            <element signature="e#29690#30397#0" />
+            <element signature="e#30418#30518#0" />
+            <element signature="e#30623#31074#0" />
+            <element signature="e#30644#30779#0" />
+            <element signature="e#30827#31074#0" />
+            <element signature="e#31442#31676#0" />
+            <element signature="e#31710#31990#0" />
+            <element signature="e#32149#33492#0" />
+            <element signature="e#33532#33738#0" />
+            <element signature="e#33794#37540#0" />
+            <element signature="e#33859#34018#0" />
+            <element signature="e#34315#34651#0" />
+            <element signature="e#34348#34651#0" />
+            <element signature="e#34435#34651#0" />
+            <element signature="e#34489#34651#0" />
+            <element signature="e#34691#34925#0" />
+            <element signature="e#34959#35142#0" />
+            <element signature="e#35301#37277#0" />
+            <element signature="e#35529#35709#0" />
+            <element signature="e#35764#36051#0" />
+            <element signature="e#36234#37011#0" />
+            <element signature="e#37059#37277#0" />
+            <element signature="e#37318#37524#0" />
+            <element signature="e#37583#39937#0" />
+            <element signature="e#37652#37813#0" />
+            <element signature="e#38110#38446#0" />
+            <element signature="e#38143#38446#0" />
+            <element signature="e#38230#38446#0" />
+            <element signature="e#38284#38446#0" />
+            <element signature="e#38486#38720#0" />
+            <element signature="e#38754#38937#0" />
+            <element signature="e#39096#39676#0" />
+            <element signature="e#39716#39922#0" />
+            <element signature="e#40000#40459#0" />
+            <element signature="e#40529#41163#0" />
+            <element signature="e#40763#40959#0" />
+            <element signature="e#41016#41074#0" />
+            <element signature="e#41101#41163#0" />
+            <element signature="e#41220#42318#0" />
+            <element signature="e#41298#41441#0" />
+            <element signature="e#41584#42057#0" />
+            <element signature="e#42097#42303#0" />
+            <element signature="e#42376#44398#0" />
+            <element signature="e#42455#42590#0" />
+            <element signature="e#42633#42809#0" />
+            <element signature="e#42968#44137#0" />
+            <element signature="e#43190#43362#0" />
+            <element signature="e#44177#44383#0" />
+            <element signature="e#44465#45881#0" />
+            <element signature="e#44553#44713#0" />
+            <element signature="e#44856#45620#0" />
+            <element signature="e#45003#45182#0" />
+            <element signature="e#45660#45866#0" />
+            <element signature="e#45945#47168#0" />
+            <element signature="e#46030#46189#0" />
+            <element signature="e#46332#46907#0" />
+            <element signature="e#46947#47153#0" />
+            <element signature="e#47225#48391#0" />
+            <element signature="e#47303#47442#0" />
+            <element signature="e#47585#48130#0" />
+            <element signature="e#48170#48376#0" />
+            <element signature="e#48447#48509#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Weeb.py">
+    <entry file="file://$PROJECT_DIR$/discordWeebList.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
+        <state relative-caret-position="12525">
+          <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
           <folding>
-            <element signature="e#19#196#0" />
-            <element signature="e#655#895#0" />
-            <element signature="e#655#894#0" />
-            <element signature="e#982#1835#0" />
-            <element signature="e#853#1669#0" />
-            <element signature="e#3201#4652#0" />
-            <element signature="e#4694#4708#0" />
-            <element signature="e#6291#6355#0" />
-            <element signature="e#6395#11569#0" />
-            <element signature="e#11610#17407#0" />
-            <element signature="e#17450#20944#0" />
-            <element signature="e#20995#21454#0" />
-            <element signature="e#21506#23798#0" />
-            <element signature="e#23192#25659#0" />
-            <element signature="e#24509#24704#0" />
-            <element signature="e#21644#21648#0" />
-            <element signature="e#23667#25451#0" />
-            <element signature="e#21773#23081#0" />
-            <element signature="e#6843#7049#0" />
-            <element signature="e#3275#3427#0" />
-            <element signature="e#3595#3825#0" />
-            <element signature="e#4188#4343#0" />
-            <marker date="1536528450951" expanded="true" signature="31593:33391" ph="..." />
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Weeb.py" />
+    <entry file="file://$PROJECT_DIR$/Weeb.py" />
+    <entry file="file://$PROJECT_DIR$/modules/Weeb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="102" column="14" selection-start-line="102" selection-start-column="14" selection-end-line="102" selection-end-column="14" />
+          <folding>
+            <element signature="e#168#345#0" />
+            <element signature="e#221#288#0" />
+            <element signature="e#322#345#0" />
+            <element signature="e#368#654#0" />
+            <element signature="e#676#964#0" />
+            <element signature="e#984#1789#0" />
+            <element signature="e#1071#1357#0" />
+            <element signature="e#1399#1417#0" />
+            <element signature="e#1459#1477#0" />
+            <element signature="e#1521#1541#0" />
+            <element signature="e#1603#1641#0" />
+            <element signature="e#1697#1729#0" />
+            <element signature="e#1771#1789#0" />
+            <element signature="e#1809#2614#0" />
+            <element signature="e#1896#2182#0" />
+            <element signature="e#2224#2242#0" />
+            <element signature="e#2284#2302#0" />
+            <element signature="e#2346#2366#0" />
+            <element signature="e#2428#2466#0" />
+            <element signature="e#2522#2554#0" />
+            <element signature="e#2596#2614#0" />
+            <element signature="e#2636#8802#0" />
+            <element signature="e#2694#2791#0" />
+            <element signature="e#2821#4021#0" />
+            <element signature="e#3065#3203#0" />
+            <element signature="e#3287#3425#0" />
+            <element signature="e#3593#3765#0" />
+            <element signature="e#3849#4021#0" />
+            <element signature="e#4078#4611#0" />
+            <element signature="e#4408#4454#0" />
+            <element signature="e#4798#5057#0" />
+            <element signature="e#5327#5499#0" />
+            <element signature="e#5550#5621#0" />
+            <element signature="e#5672#5743#0" />
+            <element signature="e#5861#6067#0" />
+            <element signature="e#6109#7429#0" />
+            <element signature="e#6146#6307#0" />
+            <element signature="e#6350#6609#0" />
+            <element signature="e#6782#7132#0" />
+            <element signature="e#7173#7379#0" />
+            <element signature="e#7471#8802#0" />
+            <element signature="e#7508#7669#0" />
+            <element signature="e#7723#7982#0" />
+            <element signature="e#8155#8505#0" />
+            <element signature="e#8546#8752#0" />
+            <element signature="e#8829#28609#0" />
+            <element signature="e#8857#8922#0" />
+            <element signature="e#8968#8996#0" />
+            <element signature="e#9026#9442#0" />
+            <element signature="e#9482#13854#0" />
+            <element signature="e#9547#9750#0" />
+            <element signature="e#9884#10591#0" />
+            <element signature="e#10612#10712#0" />
+            <element signature="e#10817#11268#0" />
+            <element signature="e#10838#10973#0" />
+            <element signature="e#11021#11268#0" />
+            <element signature="e#11636#11870#0" />
+            <element signature="e#11904#12184#0" />
+            <element signature="e#12343#13593#0" />
+            <element signature="e#13633#13839#0" />
+            <element signature="e#13895#17642#0" />
+            <element signature="e#13961#14120#0" />
+            <element signature="e#14417#14753#0" />
+            <element signature="e#14450#14753#0" />
+            <element signature="e#14537#14753#0" />
+            <element signature="e#14591#14753#0" />
+            <element signature="e#14793#15027#0" />
+            <element signature="e#15061#15244#0" />
+            <element signature="e#15403#17379#0" />
+            <element signature="e#15631#15811#0" />
+            <element signature="e#15866#16153#0" />
+            <element signature="e#16336#17113#0" />
+            <element signature="e#17161#17379#0" />
+            <element signature="e#17420#17626#0" />
+            <element signature="e#17685#20040#0" />
+            <element signature="e#17755#17916#0" />
+            <element signature="e#18213#18549#0" />
+            <element signature="e#18246#18549#0" />
+            <element signature="e#18333#18549#0" />
+            <element signature="e#18387#18549#0" />
+            <element signature="e#18589#18823#0" />
+            <element signature="e#18857#19040#0" />
+            <element signature="e#19199#19779#0" />
+            <element signature="e#19819#20025#0" />
+            <element signature="e#20103#20562#0" />
+            <element signature="e#20632#21256#0" />
+            <element signature="e#20866#21057#0" />
+            <element signature="e#21114#21167#0" />
+            <element signature="e#21194#21256#0" />
+            <element signature="e#21317#22416#0" />
+            <element signature="e#21396#21539#0" />
+            <element signature="e#21682#22155#0" />
+            <element signature="e#22195#22401#0" />
+            <element signature="e#22474#24495#0" />
+            <element signature="e#22554#22688#0" />
+            <element signature="e#22731#22907#0" />
+            <element signature="e#23066#24234#0" />
+            <element signature="e#23288#23459#0" />
+            <element signature="e#24274#24480#0" />
+            <element signature="e#24562#25979#0" />
+            <element signature="e#24651#24811#0" />
+            <element signature="e#24954#25718#0" />
+            <element signature="e#25101#25280#0" />
+            <element signature="e#25758#25964#0" />
+            <element signature="e#26043#27267#0" />
+            <element signature="e#26129#26288#0" />
+            <element signature="e#26431#27006#0" />
+            <element signature="e#27046#27252#0" />
+            <element signature="e#27324#28491#0" />
+            <element signature="e#27403#27542#0" />
+            <element signature="e#27685#28230#0" />
+            <element signature="e#28270#28476#0" />
+            <element signature="e#28547#28609#0" />
+            <element signature="e#28636#48509#0" />
+            <element signature="e#28664#28729#0" />
+            <element signature="e#28775#28803#0" />
+            <element signature="e#28833#29249#0" />
+            <element signature="e#29289#33753#0" />
+            <element signature="e#29353#29556#0" />
+            <element signature="e#29690#30397#0" />
+            <element signature="e#30418#30518#0" />
+            <element signature="e#30623#31074#0" />
+            <element signature="e#30644#30779#0" />
+            <element signature="e#30827#31074#0" />
+            <element signature="e#31442#31676#0" />
+            <element signature="e#31710#31990#0" />
+            <element signature="e#32149#33492#0" />
+            <element signature="e#33532#33738#0" />
+            <element signature="e#33794#37540#0" />
+            <element signature="e#33859#34018#0" />
+            <element signature="e#34315#34651#0" />
+            <element signature="e#34348#34651#0" />
+            <element signature="e#34435#34651#0" />
+            <element signature="e#34489#34651#0" />
+            <element signature="e#34691#34925#0" />
+            <element signature="e#34959#35142#0" />
+            <element signature="e#35301#37277#0" />
+            <element signature="e#35529#35709#0" />
+            <element signature="e#35764#36051#0" />
+            <element signature="e#36234#37011#0" />
+            <element signature="e#37059#37277#0" />
+            <element signature="e#37318#37524#0" />
+            <element signature="e#37583#39937#0" />
+            <element signature="e#37652#37813#0" />
+            <element signature="e#38110#38446#0" />
+            <element signature="e#38143#38446#0" />
+            <element signature="e#38230#38446#0" />
+            <element signature="e#38284#38446#0" />
+            <element signature="e#38486#38720#0" />
+            <element signature="e#38754#38937#0" />
+            <element signature="e#39096#39676#0" />
+            <element signature="e#39716#39922#0" />
+            <element signature="e#40000#40459#0" />
+            <element signature="e#40529#41163#0" />
+            <element signature="e#40763#40959#0" />
+            <element signature="e#41016#41074#0" />
+            <element signature="e#41101#41163#0" />
+            <element signature="e#41220#42318#0" />
+            <element signature="e#41298#41441#0" />
+            <element signature="e#41584#42057#0" />
+            <element signature="e#42097#42303#0" />
+            <element signature="e#42376#44398#0" />
+            <element signature="e#42455#42590#0" />
+            <element signature="e#42633#42809#0" />
+            <element signature="e#42968#44137#0" />
+            <element signature="e#43190#43362#0" />
+            <element signature="e#44177#44383#0" />
+            <element signature="e#44465#45881#0" />
+            <element signature="e#44553#44713#0" />
+            <element signature="e#44856#45620#0" />
+            <element signature="e#45003#45182#0" />
+            <element signature="e#45660#45866#0" />
+            <element signature="e#45945#47168#0" />
+            <element signature="e#46030#46189#0" />
+            <element signature="e#46332#46907#0" />
+            <element signature="e#46947#47153#0" />
+            <element signature="e#47225#48391#0" />
+            <element signature="e#47303#47442#0" />
+            <element signature="e#47585#48130#0" />
+            <element signature="e#48170#48376#0" />
+            <element signature="e#48447#48509#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/discordWeebList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="49" column="10" lean-forward="true" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#115#134#0" />
+            <element signature="e#282#297#0" />
+            <element signature="e#461#483#0" />
+            <element signature="e#695#719#0" />
+            <element signature="e#688#715#0" />
+            <element signature="e#954#958#0" />
+            <element signature="e#1018#1029#0" />
           </folding>
         </state>
       </provider>
