@@ -203,7 +203,7 @@ class AnimeManager:
     def __init__(self, status_list):
         self.status_list = status_list
         self.anime_list = {}
-
+    
     async def add(self, ctx):
         '''Adds an anime to the list'''
 
@@ -561,7 +561,24 @@ class AnimeManager:
         embed.add_field(name="Score", value=anime.score, inline=False)
 
         return embed
+    
+    asynce def verify_response(self, ctx, message):
+        msg = await bot.send_message(ctx.message.channel, message)
+        response = await bot.wait_for_message(timeout=timeout_time, author=ctx.message.author)
+        await bot.delete_message(msg)
 
+        if response is None:
+            msg = await bot.send_message(ctx.message.channel, ":alarm_clock: | Timeout | :alarm_clock:")
+            await sleep(timeout_time)
+            await bot.delete_message(msg)
+            return
+        elif response.content == "cancel":
+            await bot.delete_message(response)
+            return
+        else:
+            await bot.delete_message(response)
+            return response.content
+    
     async def edit_title(self, ctx, anime_id):
         '''Edits the title of an anime on the list'''
 
