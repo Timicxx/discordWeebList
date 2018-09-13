@@ -134,6 +134,7 @@ class Manager:
                 print("Anime List Created!")
 
     async def list_all(self, bot, channel_id):
+        global BOT
         BOT = bot
         anime_list = "Anime: \n"
         manga_list = "Manga: \n"
@@ -181,10 +182,10 @@ class Manager:
             await BOT.delete_message(msg)
         elif response.content == "1":
             await BOT.delete_message(response)
-            await Manager.anime(ctx)
+            await self.anime(ctx)
         elif response.content == "2":
             await BOT.delete_message(response)
-            await Manager.manga(ctx)
+            await self.manga(ctx)
         elif response.content == "$cancel":
             await BOT.delete_message(response)
         else:
@@ -289,8 +290,8 @@ class AnimeManager:
         self.anime_list = anime_list
 
     def save(self):
-        anime_list_save_file = "..\\saves\\anime_list.p"
-        backup_file = "..\\saves\\backup\\{}".format(
+        anime_list_save_file = "saves\\anime_list.p"
+        backup_file = "saves\\backup\\{}".format(
             datetime.datetime.now().strftime("anime_list_backup_%H_%M_%d_%m_%Y.bck")
         )
 
@@ -861,8 +862,8 @@ class MangaManager:
         self.manga_list = manga_list
 
     def save(self):
-        manga_list_save_file = "..\\saves\\manga_list.p"
-        backup_file = "..\\saves\\backup\\{}".format(
+        manga_list_save_file = "saves\\manga_list.p"
+        backup_file = "saves\\backup\\{}".format(
             datetime.datetime.now().strftime("manga_list_backup_%H_%M_%d_%m_%Y.bck")
         )
 
