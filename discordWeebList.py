@@ -3,17 +3,20 @@ from discord.ext import commands
 from asyncio import sleep
 import json
 from modules.Weeb import *
+from modules.WhatAnimeGa import WhatAnimeGa
 
 #region Definitions
 with open('auth.json', 'rb') as f:
     auth = json.load(f)
-TOKEN = auth["auth"]["discord_token"]
+DISCORD_TOKEN = auth["auth"]["discord_token"]
+WHATANIMEGA_TOKEN = auth["auth"]["whatanimega_token"]
 DEBUG_CHANNEL = "487923259057111040"
 #endregion
 
 
 #region Objects
 bot = commands.Bot(command_prefix='%')
+whatAnimeBot = WhatAnimeGa(WHATANIMEGA_TOKEN, bot)
 weeb_client = Manager(AnimeManager(), MangaManager())
 #endregion
 
@@ -23,11 +26,19 @@ weeb_client = Manager(AnimeManager(), MangaManager())
 async def on_ready():
     await bot.change_presence(game=discord.Game(name="%help"))
     await weeb_client.list_all(bot, DEBUG_CHANNEL)
+    whatAnimeGaStatus = whatAnimeBot.initialize()
     print('------')
+    print('DISCORD BOT')
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
     print('------')
+    print('WHATANIME.GA')
+    print('Logged in as')
+    print(whatAnimeGaStatus["email"])
+    print(whatAnimeGaStatus["user_id"])
+    print('------')
+
 #endregion
 
 
@@ -37,11 +48,15 @@ async def weeb(ctx):
     '''Manage Rafal's Weeb List'''
     await weeb_client.menu(ctx)
 
+@bot.command()
+async def backup():
+    '''Backup Weeb List'''
+    await weeb_client.dump_to_json()
 
 @bot.command(pass_context=True)
 async def whatanime(ctx):
     '''Find source of an anime screenshot'''
-    pass
+    await whatAnimeBot.getSource(ctx)
 
 @bot.command(pass_context=True)
 async def sauce(ctx):
@@ -55,4 +70,4 @@ async def yt2mp3(ctx):
 #endregion
 
 # Start the bot
-bot.run(TOKEN)
+bot.run(DISCORD_TOKEN)

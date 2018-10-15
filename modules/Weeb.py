@@ -4,6 +4,7 @@ import datetime
 import requests
 from asyncio import sleep
 from shutil import copyfile
+import json
 
 
 TIMEOUT_TIME = 15.0
@@ -132,6 +133,48 @@ class Manager:
                 pickle.dump(manga_list, manga_pickle, protocol=pickle.HIGHEST_PROTOCOL)
                 self.manga_manager.set_list(manga_list)
                 print("Anime List Created!")
+
+    async def dump_to_json(self):
+        weeb_json = {
+            "anime":
+                [
+
+                ],
+            "manga":
+            [
+
+            ]
+        }
+        i = 0
+        for key, value in self.anime_manager.anime_list.items():
+            weeb_json["anime"].append({"id": value.id})
+            weeb_json["anime"][i]["title"] = value.title
+            weeb_json["anime"][i]["synonyms"] = value.synonyms
+            weeb_json["anime"][i]["status"] = str(value.status)
+            weeb_json["anime"][i]["current_episode"] = value.current_episode
+            weeb_json["anime"][i]["last_episode"] = value.last_episode
+            weeb_json["anime"][i]["score"] = value.score
+            weeb_json["anime"][i]["url"] = value.url
+            weeb_json["anime"][i]["thumbnail"] = value.thumbnail
+            weeb_json["anime"][i]["message"] = value.message.id
+            i += 1
+
+        i = 0
+        for key, value in self.manga_manager.manga_list.items():
+            weeb_json["manga"].append({"id": value.id})
+            weeb_json["manga"][i]["title"] = value.title
+            weeb_json["manga"][i]["synonyms"] = value.synonyms
+            weeb_json["manga"][i]["status"] = str(value.status)
+            weeb_json["manga"][i]["current_chapter"] = value.current_chapter
+            weeb_json["manga"][i]["last_chapter"] = value.last_chapter
+            weeb_json["manga"][i]["score"] = value.score
+            weeb_json["manga"][i]["url"] = value.url
+            weeb_json["manga"][i]["thumbnail"] = value.thumbnail
+            weeb_json["manga"][i]["message"] = value.message.id
+            i += 1
+
+        with open("saves/weeb_json.json", 'w', encoding='utf-8') as out:
+            out.write(json.dumps(weeb_json, ensure_ascii=False, indent=4))
 
     async def list_all(self, bot, channel_id):
         global BOT
