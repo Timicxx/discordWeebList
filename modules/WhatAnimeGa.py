@@ -11,7 +11,6 @@ from urllib.parse import quote
 class HelperFunctions:
     def __init__(self):
         self.extentions = [".png", ".jpg", ".jpeg", ".gif"]
-        pass
 
     def verifyUrl(self, url):
         val = URLValidator()
@@ -78,7 +77,7 @@ class WhatAnimeGa:
         response = requests.get(self.urls["me"])
         return response.json()
 
-    async def getSourceFromImage(self, image_path):
+    def getSourceFromImage(self, image_path):
         encoded = self.helper.convertImageToBase64(image_path)
         if encoded is None:
             return None
@@ -89,7 +88,7 @@ class WhatAnimeGa:
         if response is None:
             return -1
         return response.json()
-
+	
     async def getSource(self, ctx):
         '''Gets source of the image'''
 
@@ -97,7 +96,7 @@ class WhatAnimeGa:
         await self.bot.delete_message(ctx.message)
         link = ctx.message.content
         link = link.split(' ')[1]
-        source_json = await self.getSourceFromImage(link)
+        source_json = self.getSourceFromImage(link)
         if source_json is None:
             msg = await self.bot.send_message(ctx.message.channel, ":x: :anger: Invalid link :anger: :x:")
             await sleep(5.0)
