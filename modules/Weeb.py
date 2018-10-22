@@ -7,34 +7,10 @@ from shutil import copyfile
 import json
 
 
+CHANNEL_ID = None
 TIMEOUT_TIME = 15.0
 BOT = None
 
-
-class Status:
-    def __init__(self, status_name, channel_id):
-        self.status_name = status_name
-        self.channel_id = channel_id
-
-    def __repr__(self):
-        return self.status_name
-
-
-ANIME_STATUS_LIST = {
-    "Watching": Status("Watching", 488374192023142450),
-    "Dropped": Status("Dropped", 488374347061395466),
-    "Plan To Watch": Status("Plan To Watch", 488374396042477589),
-    "Finished": Status("Finished", 488374580176748574),
-    "Hentai": Status("Hentai", 488374314517790720)
-}
-
-MANGA_STATUS_LIST = {
-    "Reading": Status("Reading", 488767761485398036),
-    "Dropped": Status("Dropped", 488767826069291012),
-    "Plan To Read": Status("Plan To Read", 488767866049396736),
-    "Finished": Status("Finished", 488767941551194122),
-    "Doujinshi": Status("Doujinshi", 488767971079094282)
-}
 
 
 class Anime:
@@ -48,13 +24,9 @@ class Anime:
         self.score = 0.0
         self.url = url
         self.thumbnail = thumbnail
-        self.message = None
-
+        
     def set_title(self, title):
         self.title = title
-
-    def set_message(self, ctx):
-        self.message = ctx
 
     def set_status(self, status):
         self.status = status
@@ -80,13 +52,9 @@ class Manga:
         self.score = 0.0
         self.url = url
         self.thumbnail = thumbnail
-        self.message = None
 
     def set_title(self, title):
         self.title = title
-
-    def set_message(self, ctx):
-        self.message = ctx
 
     def set_status(self, status):
         self.status = status
@@ -113,7 +81,7 @@ class Manager:
 
         anime_list_save_file = "saves\\anime_list.p"
         manga_list_save_file = "saves\\manga_list.p"
-
+        
         try:
             with open(anime_list_save_file, 'rb') as anime_pickle:
                 anime_list = pickle.load(anime_pickle)
@@ -133,6 +101,15 @@ class Manager:
                 pickle.dump(manga_list, manga_pickle, protocol=pickle.HIGHEST_PROTOCOL)
                 self.manga_manager.set_list(manga_list)
                 print("Anime List Created!")
+        try:        
+            with open("saves\\manga_messages.p", 'rb') as pkl:
+                manga_current_messages = pickle.load(pkl)
+                self.manga_manager.set_current_messages(manga_current_messages)
+            with open("saves\\anime_messages.p", 'rb') as pkl:
+                anime_current_messages = pickle.load(pkl)
+                self.anime_manager.set_current_messages(anime_current_messages)    
+        except FileNotFoundError:
+            return
 
     async def dump_to_json(self):
         weeb_json = {
@@ -156,7 +133,6 @@ class Manager:
             weeb_json["anime"][i]["score"] = value.score
             weeb_json["anime"][i]["url"] = value.url
             weeb_json["anime"][i]["thumbnail"] = value.thumbnail
-            weeb_json["anime"][i]["message"] = value.message.id
             i += 1
 
         i = 0
@@ -170,39 +146,26 @@ class Manager:
             weeb_json["manga"][i]["score"] = value.score
             weeb_json["manga"][i]["url"] = value.url
             weeb_json["manga"][i]["thumbnail"] = value.thumbnail
-            weeb_json["manga"][i]["message"] = value.message.id
             i += 1
 
         with open("saves/weeb_json.json", 'w', encoding='utf-8') as out:
             out.write(json.dumps(weeb_json, ensure_ascii=False, indent=4))
 
-    async def list_all(self, bot, channel_id):
-        global BOT
+    async def init(self, bot, channel_id):
+        global BOT, CHANNEL_ID
         BOT = bot
-        anime_list = "Anime: \n"
-        manga_list = "Manga: \n"
-
-        for key, value in self.anime_manager.anime_list.items():
-            anime_list += "\t{}\n".format(value.title)
-
-        for key, value in self.manga_manager.manga_list.items():
-            manga_list += "\t{}\n".format(value.title)
-
-        full_list = (
-            "```\n"
-            "{}\n{}"
-            "```".format(anime_list, manga_list)
-        )
-
-        channel = BOT.get_channel(channel_id)
-        await BOT.send_message(channel, full_list)
-
+        CHANNEL_ID = channel_id
+        return
+                
     async def menu(self, ctx):
         '''Weeb menu'''
 
         await sleep(0.5)
         await BOT.delete_message(ctx.message)
 
+        if BOT.get_channel(CHANNEL_ID) is None:
+            await self.setup(ctx)
+        
         options = "[1] Anime\n[2] Manga\n"
         message = (
             "```js\n"
@@ -236,7 +199,45 @@ class Manager:
             msg = await BOT.send_message(ctx.message.channel, ":x: | Invalid option | :x:")
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)
-
+    
+    async def setup(self, ctx):
+        message = (
+            "```js\n"
+            "Please type the ID of the channel to use as the list channel.\n"
+            "\n"
+            "Type '$cancel' to cancel the operation.\n"
+            "```"
+        )
+        
+        msg = await BOT.send_message(ctx.message.channel, message)
+        response = await BOT.wait_for_message(timeout=TIMEOUT_TIME, author=ctx.message.author)
+        await BOT.delete_message(msg)
+        
+        if response is None:
+            return
+        elif response.content == "$cancel":
+            await BOT.delete_message(response)
+        elif BOT.get_channel(response.content) is None:
+            await BOT.delete_message(response)
+            msg = await BOT.send_message(ctx.message.channel, ":x: | Channel does not exist | :x:")
+            await sleep(TIMEOUT_TIME)
+            await BOT.delete_message(msg)
+            return
+            
+        CHANNEL_ID = response.content
+        
+        with open('auth.json', 'rb') as f:
+            auth = json.load(f)
+        auth["channel"]["channel_id"] = CHANNEL_ID
+        with open('auth.json', 'w') as f:
+            json.dump(auth, f)
+        
+        await BOT.delete_message(response)
+        msg = await BOT.send_message(ctx.message.channel, ":ok: | Channel successfully setup | :ok:")
+        await sleep(2.0)
+        await BOT.delete_message(msg)
+        return
+    
     async def anime(self, ctx):
         '''Anime Menu'''
 
@@ -326,14 +327,80 @@ class Manager:
 
 class AnimeManager:
     def __init__(self):
-        self.status_list = ANIME_STATUS_LIST
+        self.current_messages = []
         self.anime_list = {}
+    
+    @staticmethod
+    def modify_embed(anime):
+        '''Modifies an anime embed'''
 
+        embed = discord.Embed(title=anime.title, url=anime.url, color=0xff80ff)
+        embed.set_thumbnail(url=anime.thumbnail)
+
+        embed.add_field(name="Status", value=anime.status, inline=False)
+        embed.add_field(name="Episodes", value=str(anime.current_episode) + '/' + str(anime.last_episode), inline=False)
+        embed.add_field(name="Score", value=anime.score, inline=False)
+
+        return embed
+    
+    @staticmethod
+    def get_thumbnail(anime_id):
+        query = '''
+        query ($id: Int) {
+            Media (id: $id, type: ANIME) {
+                id
+                coverImage {
+                    large
+                }
+            }
+        }
+        '''
+        variables = {
+            'id': anime_id
+        }
+        url = 'https://graphql.anilist.co'
+        anilist_response = requests.post(url, json={'query': query, 'variables': variables})
+        data = anilist_response.json()
+        data = data["data"]["Media"]
+        return data["coverImage"]["large"]
+    
+    async def update_list(self):
+        '''Updates the anime list'''
+        channel = BOT.get_channel(CHANNEL_ID)
+        
+        sorted_list = ["Watching", "Dropped", "Plan To Watch", "Finished"]
+        
+        if len(self.current_messages) > 2:
+            await BOT.delete_messages(self.current_messages)
+        self.current_messages = []
+        
+        section_msg = await BOT.send_file(channel, "static/ANIME_LIST_BANNER.jpg", filename="ANIME_LIST_BANNER.jpg", content=' ')
+        await BOT.pin_message(section_msg)
+        self.current_messages.append(section_msg)
+        
+        for status in sorted_list:
+            status_msg = await BOT.send_message(channel, status) # Replace message with status image banner or more better looking message
+            self.current_messages.append(status_msg)
+            for entry in self.anime_list.values():
+                if str(entry.status) == status:
+                    entry.status = status # Delete
+                    entry.thumbnail = self.get_thumbnail(entry.id) #Delete
+                    embed = self.modify_embed(entry)
+                    entry_message = await BOT.send_message(channel, ' ', embed=embed)
+                    self.current_messages.append(entry_message)
+                    await sleep(0.5)
+        self.save()
+        return
+    
+    def set_current_messages(self, current_messages):
+        self.current_messages = current_messages
+    
     def set_list(self, anime_list):
         self.anime_list = anime_list
 
     def save(self):
         anime_list_save_file = "saves\\anime_list.p"
+        
         backup_file = "saves\\backup\\{}".format(
             datetime.datetime.now().strftime("anime_list_backup_%H_%M_%d_%m_%Y.bck")
         )
@@ -342,6 +409,8 @@ class AnimeManager:
 
         with open(anime_list_save_file, 'wb') as list_pickle:
             pickle.dump(self.anime_list, list_pickle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open("saves\\anime_messages.p", 'wb') as pkl:
+            pickle.dump(self.current_messages, pkl, protocol=pickle.HIGHEST_PROTOCOL)
         return
 
     async def add(self, ctx):
@@ -450,21 +519,14 @@ class AnimeManager:
                 new_anime_json["id"],
                 new_anime_json["title"]["romaji"],
                 synonyms,
-                self.status_list["Plan To Watch"],
+                "Plan To Watch",
                 new_anime_json["episodes"],
                 new_anime_json["siteUrl"],
                 new_anime_json["coverImage"]["large"]
             )
             self.anime_list[new_anime_json["id"]] = new_anime
-
-            embed = await self.modify_embed(self.anime_list[new_anime_json["id"]])
-            channel = BOT.get_channel(str(self.status_list["Plan To Watch"].channel_id))
-            msg = await BOT.send_message(
-                channel,
-                ' ',
-                embed=embed
-            )
-            self.anime_list[new_anime_json["id"]].set_message(msg)
+            
+            await self.update_list()
         except ValueError:
             await BOT.delete_message(response)
             msg = await BOT.send_message(ctx.message.channel, ":x: | Invalid option | :x:")
@@ -633,8 +695,8 @@ class AnimeManager:
             if option > entry_index:
                 raise ValueError("Option does not exist")
             anime_to_delete_index = matching_anime[option - 1]
-            await BOT.delete_message(self.anime_list[anime_to_delete_index].message)
             del self.anime_list[anime_to_delete_index]
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":ok_hand:  | Succesfully removed anime from list | :ok_hand:"
@@ -647,19 +709,6 @@ class AnimeManager:
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)
         return
-
-    @staticmethod
-    async def modify_embed(anime):
-        '''Modifies an anime embed'''
-
-        embed = discord.Embed(title=anime.title, url=anime.url, color=0xff80ff)
-        embed.set_thumbnail(url=anime.thumbnail)
-
-        embed.add_field(name="Status", value=anime.status.status_name, inline=False)
-        embed.add_field(name="Episodes", value=str(anime.current_episode) + '/' + str(anime.last_episode), inline=False)
-        embed.add_field(name="Score", value=anime.score, inline=False)
-
-        return embed
 
     @staticmethod
     async def get_response(ctx, message):
@@ -699,8 +748,7 @@ class AnimeManager:
             anime = self.anime_list[anime_id]
 
             anime.set_title(title)
-            embed = await self.modify_embed(anime)
-            await BOT.edit_message(anime.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":clap: | Title changed to {} | :clap:".format(title)
@@ -756,16 +804,11 @@ class AnimeManager:
             if status_name[status_index] == "Finished":
                 anime.set_current_episode(anime.last_episode)
 
-            anime.set_status(self.status_list[status_name[status_index]])
-            embed = await self.modify_embed(anime)
-            channel = BOT.get_channel(str(anime.status.channel_id))
-
-            await BOT.delete_message(anime.message)
-            current_message = await BOT.send_message(channel, ' ', embed=embed)
-            anime.set_message(current_message)
+            anime.set_status(status_name[status_index])
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
-                ":clap: | Status changed to {} | :clap:".format(self.status_list[status_name[status_index]])
+                ":clap: | Status changed to {} | :clap:".format(status_name[status_index])
             )
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)
@@ -802,8 +845,7 @@ class AnimeManager:
                     current_episode = 0
 
             anime.set_current_episode(current_episode)
-            embed = await self.modify_embed(anime)
-            await BOT.edit_message(anime.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":clap: | Current episode changed to {} | :clap:".format(current_episode)
@@ -840,8 +882,7 @@ class AnimeManager:
                 last_episode = 0
 
             anime.set_last_episode(last_episode)
-            embed = await self.modify_embed(anime)
-            await BOT.edit_message(anime.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":clap: | Last episode changed to {} | :clap:".format(last_episode)
@@ -879,8 +920,7 @@ class AnimeManager:
 
             anime = self.anime_list[anime_id]
             anime.set_score(score)
-            embed = await self.modify_embed(anime)
-            await BOT.edit_message(anime.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(ctx.message.channel, ":clap: | Score changed to {} | :clap:".format(score))
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)
@@ -898,14 +938,81 @@ class AnimeManager:
 
 class MangaManager:
     def __init__(self):
-        self.status_list = MANGA_STATUS_LIST
+        self.current_messages = []
         self.manga_list = {}
+    
+    @staticmethod
+    def modify_embed(manga):
+        '''Modifies a manga embed'''
 
+        embed = discord.Embed(title=manga.title, url=manga.url, color=0xff80ff)
+        embed.set_thumbnail(url=manga.thumbnail)
+
+        embed.add_field(name="Status", value=manga.status, inline=False)
+        embed.add_field(name="Chapters", value=str(manga.current_chapter) + '/' + str(manga.last_chapter), inline=False)
+        embed.add_field(name="Score", value=manga.score, inline=False)
+
+        return embed
+    
+    @staticmethod
+    def get_thumbnail(manga_id):
+        query = '''
+        query ($id: Int) {
+            Media (id: $id, type: MANGA) {
+                id
+                coverImage {
+                    large
+                }
+            }
+        }
+        '''
+        variables = {
+            'id': manga_id
+        }
+        url = 'https://graphql.anilist.co'
+        anilist_response = requests.post(url, json={'query': query, 'variables': variables})
+        data = anilist_response.json()
+        data = data["data"]["Media"]
+        return data["coverImage"]["large"]
+    
+    
+    async def update_list(self):
+        '''Updates the manga list'''
+        channel = BOT.get_channel(CHANNEL_ID)
+        
+        sorted_list = ["Reading", "Dropped", "Plan To Read", "Finished"]
+        
+        if len(self.current_messages) > 2:
+            await BOT.delete_messages(self.current_messages)
+        self.current_messages = []
+        
+        section_msg = await BOT.send_file(channel, "static/MANGA_LIST_BANNER.jpg", filename="MANGA_LIST_BANNER.jpg", content=' ')
+        await BOT.pin_message(section_msg)
+        self.current_messages.append(section_msg)
+        
+        for status in sorted_list:
+            status_msg = await BOT.send_message(channel, status) # Replace message with status image banner or more better looking message
+            self.current_messages.append(status_msg)
+            for entry in self.manga_list.values():
+                if str(entry.status) == status:
+                    entry.status = status # Delete
+                    entry.thumbnail = self.get_thumbnail(entry.id) #Delete
+                    embed = self.modify_embed(entry)
+                    entry_message = await BOT.send_message(channel, ' ', embed=embed)
+                    self.current_messages.append(entry_message)
+                    await sleep(0.5)
+        self.save()
+        return
+    
+    def set_current_messages(self, current_messages):
+        self.current_messages = current_messages
+    
     def set_list(self, manga_list):
         self.manga_list = manga_list
 
     def save(self):
         manga_list_save_file = "saves\\manga_list.p"
+        
         backup_file = "saves\\backup\\{}".format(
             datetime.datetime.now().strftime("manga_list_backup_%H_%M_%d_%m_%Y.bck")
         )
@@ -914,6 +1021,8 @@ class MangaManager:
 
         with open(manga_list_save_file, 'wb') as list_pickle:
             pickle.dump(self.manga_list, list_pickle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open("saves\\manga_messages.p", 'wb') as pkl:
+            pickle.dump(self.current_messages, pkl, protocol=pickle.HIGHEST_PROTOCOL)
         return
 
     async def add(self, ctx):
@@ -1026,21 +1135,14 @@ class MangaManager:
                 new_manga_json["id"],
                 new_manga_json["title"]["romaji"],
                 synonyms,
-                self.status_list["Plan To Read"],
+                "Plan To Read",
                 chapters,
                 new_manga_json["siteUrl"],
                 new_manga_json["coverImage"]["large"]
             )
             self.manga_list[new_manga_json["id"]] = new_manga
 
-            embed = await self.modify_embed(self.manga_list[new_manga_json["id"]])
-            channel = BOT.get_channel(str(self.status_list["Plan To Read"].channel_id))
-            msg = await BOT.send_message(
-                channel,
-                ' ',
-                embed=embed
-            )
-            self.manga_list[new_manga_json["id"]].set_message(msg)
+            await self.update_list()
         except ValueError:
             await BOT.delete_message(response)
             msg = await BOT.send_message(ctx.message.channel, ":x: | Invalid option | :x:")
@@ -1209,8 +1311,8 @@ class MangaManager:
             if option > entry_index:
                 raise ValueError("Option does not exist")
             manga_to_delete_index = matching_manga[option - 1]
-            await BOT.delete_message(self.manga_list[manga_to_delete_index].message)
             del self.manga_list[manga_to_delete_index]
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":ok_hand:  | Succesfully removed manga from list | :ok_hand:"
@@ -1223,19 +1325,6 @@ class MangaManager:
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)
         return
-
-    @staticmethod
-    async def modify_embed(manga):
-        '''Modifies an manga embed'''
-
-        embed = discord.Embed(title=manga.title, url=manga.url, color=0xff80ff)
-        embed.set_thumbnail(url=manga.thumbnail)
-
-        embed.add_field(name="Status", value=manga.status.status_name, inline=False)
-        embed.add_field(name="Chapters", value=str(manga.current_chapter) + '/' + str(manga.last_chapter), inline=False)
-        embed.add_field(name="Score", value=manga.score, inline=False)
-
-        return embed
 
     @staticmethod
     async def get_response(ctx, message):
@@ -1275,8 +1364,7 @@ class MangaManager:
             manga = self.manga_list[manga_id]
 
             manga.set_title(title)
-            embed = await self.modify_embed(manga)
-            await BOT.edit_message(manga.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":clap: | Title changed to {} | :clap:".format(title)
@@ -1298,7 +1386,6 @@ class MangaManager:
             "[2] Dropped\n"
             "[3] Plan To Read\n"
             "[4] Finished\n"
-            "[5] Doujinshi\n"
         )
         message = (
             "```js\n"
@@ -1325,23 +1412,17 @@ class MangaManager:
                 1: "Reading",
                 2: "Dropped",
                 3: "Plan To Read",
-                4: "Finished",
-                5: "Doujinshi"
+                4: "Finished"
             }
 
             if status_name[status_index] == "Finished":
                 manga.set_current_chapter(manga.last_chapter)
 
-            manga.set_status(self.status_list[status_name[status_index]])
-            embed = await self.modify_embed(manga)
-            channel = BOT.get_channel(str(manga.status.channel_id))
-
-            await BOT.delete_message(manga.message)
-            current_message = await BOT.send_message(channel, ' ', embed=embed)
-            manga.set_message(current_message)
+            manga.set_status(status_name[status_index])
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
-                ":clap: | Status changed to {} | :clap:".format(self.status_list[status_name[status_index]])
+                ":clap: | Status changed to {} | :clap:".format(status_name[status_index])
             )
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)
@@ -1378,8 +1459,7 @@ class MangaManager:
                     current_chapter = 0
 
             manga.set_current_chapter(current_chapter)
-            embed = await self.modify_embed(manga)
-            await BOT.edit_message(manga.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":clap: | Current chapter changed to {} | :clap:".format(current_chapter)
@@ -1416,8 +1496,7 @@ class MangaManager:
                 last_chapter = 0
 
             manga.set_last_chapter(last_chapter)
-            embed = await self.modify_embed(manga)
-            await BOT.edit_message(manga.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(
                 ctx.message.channel,
                 ":clap: | Last chapter changed to {} | :clap:".format(last_chapter)
@@ -1455,8 +1534,7 @@ class MangaManager:
 
             manga = self.manga_list[manga_id]
             manga.set_score(score)
-            embed = await self.modify_embed(manga)
-            await BOT.edit_message(manga.message, ' ', embed=embed)
+            await self.update_list()
             msg = await BOT.send_message(ctx.message.channel, ":clap: | Score changed to {} | :clap:".format(score))
             await sleep(TIMEOUT_TIME)
             await BOT.delete_message(msg)

@@ -35,7 +35,7 @@ class HelperFunctions:
         h_size = int(round(img.size[1] * 0.5))
         img = img.resize((w_size, h_size), Image.ANTIALIAS)
         
-        md5_name = hashlib.md5(response.content.encode('utf8')).hexdigest()
+        md5_name = hashlib.md5(response.text.encode('utf8')).hexdigest()
         new_image_path = "helper/images/{}{}".format(md5_name, extention)
         
         img.save(new_image_path)
