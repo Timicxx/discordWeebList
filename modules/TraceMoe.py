@@ -1,6 +1,8 @@
 import requests
+import os
 import base64
 import uuid
+import hashlib
 from PIL import Image
 from asyncio import sleep
 from django.core.validators import URLValidator
@@ -9,9 +11,6 @@ from urllib.parse import quote
 
 
 class HelperFunctions:
-    def __init__(self):
-        self.extentions = [".png", ".jpg", ".jpeg", ".gif"]
-
     def verifyUrl(self, url):
         val = URLValidator()
         try:
@@ -24,10 +23,8 @@ class HelperFunctions:
         if self.verifyUrl(image_path) is False:
             return None
         temp_image_path = ""
-        for extention in self.extentions:
-            if image_path.endswith(extention):
-                temp_image_path = "helper/images/{}".format(str(uuid.uuid4()) + extention)
-                break
+        extention = os.path.splitext(image_path)[1]
+        temp_image_path = "helper/images/{}".format(str(uuid.uuid4()) + extention)
         if temp_image_path == "":
             return None
         with open(temp_image_path, 'wb') as saved_image:
@@ -37,40 +34,51 @@ class HelperFunctions:
         w_size = int(round(img.size[0] * 0.5))
         h_size = int(round(img.size[1] * 0.5))
         img = img.resize((w_size, h_size), Image.ANTIALIAS)
-        img.save(temp_image_path)
-        encoded = base64.b64encode(open(temp_image_path, "rb").read())
+        
+        md5_name = hashlib.md5(response.content.encode('utf8')).hexdigest()
+        new_image_path = "helper/images/{}{}".format(md5_name, extention)
+        
+        img.save(new_image_path)
+        os.remove(temp_image_path)
+        encoded = base64.b64encode(open(new_image_path, "rb").read())
         return encoded
 
-    def getPreview(self, json):
+    def getPreview(self, res):
         preview = (
-            "https://whatanime.ga/preview.php?"
+            "https://trace.moe/preview.php?"
             "anilist_id={}&"
             "file={}&"
             "t={}&"
             "token={}"
         ).format(
-            str(json["docs"][0]["anilist_id"]),
-            quote(json["docs"][0]["filename"]),
-            str(json["docs"][0]["at"]),
-            json["docs"][0]["tokenthumb"]
+            str(res["docs"][0]["anilist_id"]),
+            quote(res["docs"][0]["filename"]),
+            str(res["docs"][0]["at"]),
+            res["docs"][0]["tokenthumb"]
         )
 
         vid = requests.get(preview, stream=True)
-        mp4_path = "helper/videos/{}.mp4".format(str(uuid.uuid4()))
+        
+        
+        md5_name = quote(res["docs"][0]["filename"]) + str(res["docs"][0]["at"])
+        mp4_path = "helper/videos/{}.mp4".format(hashlib.md5(md5_name.encode('utf-8')).hexdigest())
+        
+        if os.path.isfile(mp4_path):
+            return mp4_path
+        
         with open(mp4_path, 'wb') as mp4_out:
             mp4_out.write(vid.content)
-
+        
         return mp4_path
 
 
-class WhatAnimeGa:
-    def __init__(self, TOKEN, BOT):
+class TraceMoe:
+    def __init__(self, BOT):
         self.bot = BOT
         self.helper = HelperFunctions()
-        self.token = TOKEN
         self.urls = {
-            "me": "https://whatanime.ga/api/me?token={}".format(self.token),
-            "search": "https://whatanime.ga/api/search?token={}".format(self.token),
+            "me": "https://trace.moe/api/me",
+            "search": "https://trace.moe/api/search",
         }
 
     def initialize(self):
@@ -95,7 +103,10 @@ class WhatAnimeGa:
         await sleep(0.5)
         await self.bot.delete_message(ctx.message)
         link = ctx.message.content
-        link = link.split(' ')[1]
+        try:
+            link = link.split(' ')[1]
+        except IndexError:
+            return
         source_json = self.getSourceFromImage(link)
         if source_json is None:
             msg = await self.bot.send_message(ctx.message.channel, ":x: :anger: Invalid link :anger: :x:")
