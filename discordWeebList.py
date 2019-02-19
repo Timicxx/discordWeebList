@@ -64,9 +64,9 @@ async def sauce(ctx):
     pass
     
 @bot.command(pass_context=True)
-async def yt2mp3(ctx):
+async def yt2mp3(ctx, yt: str, artist: str, title: str, album: str, cover_art: str):
     '''Download mp3 with ID3 Tags from a YouTube link'''
-    await yt2mp3_client.download_m(ctx)
+    await yt2mp3_client.download_m(ctx, yt, artist, title, album, cover_art)
 #endregion
 
 # Start the bot
