@@ -4,7 +4,7 @@
 
 *How to start:*
 ```
-python discordWeebList
+python discordWeebList.py
 ```
 
 *Commands:*
