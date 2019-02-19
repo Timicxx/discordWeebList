@@ -5,5 +5,4 @@ urllib
 django
 PIL
 mutagen
-bs4
 urllib
