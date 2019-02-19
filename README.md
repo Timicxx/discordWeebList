@@ -13,7 +13,7 @@ weeb - weeb list menu
 trace - you need to attach a screenshot from an anime with this command, the bot finds the exact name, timestampand basically everything of that anime from the screenshot
 sauce - finds the source of the image/gif attached (not yet implemented)
 yt2mp3 - Converts a youtube video to a mp3 file with ID3 tags, https://github.com/Tymec/yt2mp3
-loop - shit command, never use
+backup - Backs up the weeb list into a json file
 ```
 
 *Installation:*
