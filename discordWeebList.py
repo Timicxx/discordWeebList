@@ -4,7 +4,7 @@ from asyncio import sleep
 import json
 from modules.Weeb import *
 from modules.TraceMoe import TraceMoe
-from modules.Fun import *
+from modules.discord_yt2mp3 import yt2mp3
 
 #region Definitions
 with open('auth.json', 'rb') as f:
@@ -17,17 +17,16 @@ CHANNEL_ID = auth["channel"]["channel_id"]
 #region Objects
 bot = commands.Bot(command_prefix='%')
 tracemoe_client = TraceMoe(bot)
+yt2mp3_client = yt2mp3(bot)
 weeb_client = Manager(AnimeManager(), MangaManager())
-fun_client = Fun()
 #endregion
 
 
 #region Discord Events
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="bot.timbobimbo.club | %help"))
+    await bot.change_presence(game=discord.Game(name="github.timbobimbo.club | %help"))
     await weeb_client.init(bot, CHANNEL_ID)
-    fun_client.init(bot)
     tracemoe_status = tracemoe_client.initialize()
     print('------')
     print('DISCORD BOT')
@@ -63,17 +62,11 @@ async def trace(ctx):
 async def sauce(ctx):
     '''Martin 2.0'''
     pass
-
-@bot.command(pass_context=True)
-async def loop(ctx):
-    '''Infinite Loop'''
-    await fun_client.loop(ctx)
-    pass
     
 @bot.command(pass_context=True)
 async def yt2mp3(ctx):
     '''Download mp3 with ID3 Tags from a YouTube link'''
-    pass
+    await yt2mp3_client.download_m(ctx)
 #endregion
 
 # Start the bot
