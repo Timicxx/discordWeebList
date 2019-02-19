@@ -24,7 +24,10 @@ Change the discord token and channel ID (for the channel that the bot uses as th
 You can find out more on how to do this stuff here: https://github.com/Chikachi/DiscordIntegration/wiki/How-to-get-a-token-and-channel-ID-for-Discord
 
 *To do:*
-- Remove fun class and everything related to it
-- Create a auth.json file
-- Create a requirements.txt file
-- Implement yt2mp3 into the bot
+~~- Remove fun class and everything related to it~~
+~~- Create a auth.json file~~
+~~- Create a requirements.txt file~~
+~~- Implement yt2mp3 into the bot~~
+- Implement sauce command
+- Update yt2mp3
+- Create a wiki page for how to setup the bot
